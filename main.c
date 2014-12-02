@@ -1,4 +1,5 @@
 #include "data.h"
+// printf/scanf code for importing and exporting a game object
 #define SAVEFORMAT "CRPG: "
 
 struct game gameset();
