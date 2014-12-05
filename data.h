@@ -1,3 +1,5 @@
+#ifdef CRPG_H_
+#define CRPG_H_
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -32,3 +34,10 @@ struct game {
 	char alive;
 };
 
+struct game gameset();
+void newgame();
+void loadgame();
+void savegame();
+void quitgame();
+int battle(struct game *g);
+#endif

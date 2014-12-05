@@ -1,4 +1,9 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
 #include "data.h"
+
 // printf/scanf code for importing and exporting a game object
 //#define SAVEFORMAT "CRPG: "
 

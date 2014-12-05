@@ -10,13 +10,13 @@ struct game gameset() {
 	wzd.level = 1;
 	wzd.pwr = 100;
 	wzd.def = 1;
-	strcpy("Wizard\0",wzd.name);
+	strcpy("Wizard",wzd.name);
 
 	// Create Warrior
 	struct character war;
 	war.health = 100;
 	war.level = 1;
-	strcpy("Warrior\0",war.name);
+	strcpy("Warrior",war.name);
 	war.pwr = 50;
 	war.def = 10;
 
@@ -24,7 +24,7 @@ struct game gameset() {
 	struct character hl;
 	hl.health = 150;
 	hl.level = 1;
-	strcpy("Healer\0",hl.name);
+	strcpy("Healer",hl.name);
 	hl.pwr = 20;
 	hl.def = 5;
 
@@ -34,24 +34,27 @@ struct game gameset() {
 
 	//Dungeon 1
 	struct dungeon one;
+	strcpy("One",one.name);
 	one.e.health = 200;
 	one.e.xpgain = 100;
 	one.e.pwr = 150;
-	strcpy("Goblin\0",one.e.name);
+	strcpy("Goblin",one.e.name);
 
 	//Dungeon 2
 	struct dungeon two;
+	strcpy("Two",two.name);
 	two.e.health = 300;
 	two.e.xpgain = 400;
 	two.e.pwr = 200;
-	strcpy("Orc\0",two.e.name);
+	strcpy("Orc",two.e.name);
 
 	//Dungeon 3
 	struct dungeon three;
+	strcpy("Three",three.name);
 	three.e.health = 500;
 	three.e.xpgain = 1000;
 	three.e.pwr = 500;
-	strcpy("Dragon\0",three.e.name);
+	strcpy("Dragon",three.e.name);
 
 	g.dgnset[0] = one;
 	g.dgnset[1] = two;
