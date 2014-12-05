@@ -10,6 +10,7 @@ struct character {
 	char name[MAXNAME];
 	// amount of damage character can inflict
 	int pwr;
+	int def;
 };
 
 struct enemy {
@@ -27,7 +28,7 @@ struct dungeon {
 struct game {
 	struct character p[3];
 	struct dungeon dgnset[3];
-	struct dungeon *curd;
+	int curd;
 	char alive;
 };
 

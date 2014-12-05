@@ -37,12 +37,12 @@ return 0;
 }
 
 void newgame() {
-	printf("newgame");
-//	struct game g = gameset();
-//	
-//	while (g.alive) {
-//		
-//	}
+	printf("newgame\n");
+	struct game g = gameset();
+
+	while (g.alive) {
+		
+	}
 }
 
 void loadgame() {
