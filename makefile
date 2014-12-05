@@ -1,5 +1,5 @@
 FILES = data.c main.c
-FLAGS ?= -Wall -Werror
+FLAGS ?= -Wall -Werror -g
 CC = gcc
 
 crpg: $(FILES) data.h
