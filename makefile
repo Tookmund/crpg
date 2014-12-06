@@ -4,3 +4,8 @@ CC = gcc
 
 crpg: $(FILES) data.h
 	$(CC) $(FILES) $(FLAGS) -o crpg 	
+
+crpgwin: $(FILES) data.h
+	x86_64-w64-mingw32-gcc $(FILES) $(FLAGS) -o crpg 	
+
+

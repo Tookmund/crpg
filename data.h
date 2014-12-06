@@ -1,5 +1,6 @@
-#ifdef CRPG_H_
+#ifndef CRPG_H_
 #define CRPG_H_
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -16,6 +17,7 @@ struct character {
 };
 
 struct enemy {
+	int maxhealth;
 	int health;
 	int xpgain;
 	int pwr;
@@ -29,7 +31,7 @@ struct dungeon {
 
 struct game {
 	struct character p[3];
-	struct dungeon dgnset[3];
+	struct dungeon dgn[3];
 	int curd;
 	char alive;
 };
@@ -40,4 +42,5 @@ void loadgame();
 void savegame();
 void quitgame();
 int battle(struct game *g);
+
 #endif
