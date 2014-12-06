@@ -97,6 +97,7 @@ int battle(struct game *g) {
 				}
 				if (g->dgn[g->curd].e.health <= 0) {
 					printf("The party defeated the %s!\n +%d xp for all!\n",g->dgn[g->curd].e.name,g->dgn[g->curd].e.xpgain);
+					g->score++;
 					int i;
 					for (i = 0;i < psize; i++) {
 						g->p[i].xp += (g->dgn[g->curd].e.xpgain);
@@ -150,8 +151,9 @@ int battle(struct game *g) {
 			dead += 1;
 		}
 	}
-	if (dead == psize) {
-		printf("All of the party died!\n GAME OVER\n");
+	if (dead >= psize) {
+		printf("All of the party died!\n");
+		printf("You defeated %d enemies!\n",g->score);
 		return(0);
 	}
 	return(1);

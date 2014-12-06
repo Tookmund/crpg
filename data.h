@@ -34,6 +34,7 @@ struct game {
 	struct dungeon dgn[3];
 	int curd;
 	char alive;
+	int score;
 };
 
 struct game gameset();
