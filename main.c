@@ -74,6 +74,11 @@ int battle(struct game *g) {
 				g->alive = 0;
 				continue;
 			}
+			if(g->dgn[g->curd].e.health <= 0) {
+				//don't attack the already dead monster
+				printf("%s cannot attack %s because %s is already dead!\n",g->p[i].name,g->dgn[g->curd].e.name,g->dgn[g->curd].e.name);
+				continue;
+			}
 			printf("\nWhat will %s do?\n",g->p[i].name);
 			printf("[a] Attack?\n"
 			       "[d] Defend?\n"
@@ -118,28 +123,32 @@ int battle(struct game *g) {
 				//SLEEP(1);
 			} while(c == '\n');
 		}
-		// Now the monster attacks
-		int random = rand();
-		//printf("\n%d\n",random);
-		int picker = random % 4;
-		//printf("\n%d\n",picker);
-		int ply = 0;
-		switch(picker) {
-			case 0:
-				ply = 0;
-				break;
-			case 1:
-				ply = 2;
-				break;
-			case 2:
-			case 3:
-				ply = 1;
-				break;
+		if (!(g->dgn[g->curd].e.health <= 0)) {
+			// Now the monster attacks
+			int random = rand();
+			//printf("\n%d\n",random);
+			int picker = random % 4;
+			//printf("\n%d\n",picker);
+			int ply = 0;
+			switch(picker) {
+				case 0:
+					ply = 0;
+					break;
+				case 1:
+					ply = 2;
+					break;
+				case 2:
+				case 3:
+					ply = 1;
+					break;
+			}
+			printf("%s attacks %s! Does %d points of damage!\n",g->dgn[g->curd].e.name,g->p[ply].name,g->dgn[g->curd].e.pwr);
+			g->p[ply].health -= g->dgn[g->curd].e.pwr;
+			printf("%s now has %d health!\n",g->p[ply].name,g->p[ply].health);
 		}
-		printf("%s attacks %s! Does %d points of damage!\n",g->dgn[g->curd].e.name,g->p[ply].name,g->dgn[g->curd].e.pwr);
-		g->p[ply].health -= g->dgn[g->curd].e.pwr;
-		printf("%s now has %d health!\n",g->p[ply].name,g->p[ply].health);
-
+		else {
+			printf("The %s is dead and can no longer attack!\n",g->dgn[g->curd].e.name);
+		}
 	}
 	int dead = 0;
 	for(i = 0; i < psize; i++) {
@@ -154,9 +163,9 @@ int battle(struct game *g) {
 	if (dead >= psize) {
 		printf("All of the party died!\n");
 		printf("You defeated %d enemies!\n",g->score);
-		return(0);
+		return 0;
 	}
-	return(1);
+	return 1;
 }
 
 void loadgame() {
