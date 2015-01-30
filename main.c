@@ -4,6 +4,7 @@
 #include <time.h>
 
 #include "data.h"
+#include "parser.h"
 
 #ifdef WIN32
 #include <windows.h>
@@ -45,7 +46,7 @@ int main (void) {
 
 void newgame() {
 	printf("newgame\n");
-	struct game g = gameset();
+	struct game g = setupgame();
 	struct game *gptr = &g;
 	int success = 1;
 	while(success) {

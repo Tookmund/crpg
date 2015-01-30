@@ -1,8 +1,8 @@
-FILES = data.c main.c
+FILES = data.c main.c data.h ini.c ini.h parser.c parser.h
 FLAGS ?= -Wall -Werror -g
 CC = gcc
 
-crpg: $(FILES) data.h
+crpg: $(FILES)
 	$(CC) $(FILES) $(FLAGS) -o crpg 	
 
 crpg.exe: $(FILES) data.h
