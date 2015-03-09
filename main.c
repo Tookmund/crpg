@@ -46,15 +46,14 @@ int main (void) {
 
 void newgame() {
 	printf("newgame\n");
-	struct game g = setupgame();
-	struct game *gptr = &g;
+	struct game *g = setupgame();
 	int success = 1;
 	while(success) {
-		g.alive = 1;
-		success = battle(gptr);
-		g.curd++;
-		if (g.curd >= (sizeof(g.dgn)/sizeof(struct dungeon))) {
-			g.curd = 0;
+		g->alive = 1;
+		success = battle(g);
+		g->curd++;
+		if (g->curd >= (sizeof(g->dgn)/sizeof(struct dungeon))) {
+			g->curd = 0;
 		}
 	}
 	quitgame();

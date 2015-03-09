@@ -35,6 +35,7 @@ void setupdungeon(struct game* g, int dgnnum, const char* name, const char* valu
 	}
 }
 int handler(void* user, const char* section, const char* name, const char* value) {
+	//printf("Section: (%s)\nName: (%s)\nValue: (%s)\n",section,name,value);
 	struct game* g = (struct game*)user;
 	if (strcmp(section, "party0") == 0) {
 		setupplayer(g,0,name,value);
@@ -43,11 +44,11 @@ int handler(void* user, const char* section, const char* name, const char* value
 	} else if (strcmp(section,"party2")) {
 		setupplayer(g,2,name,value);
 	}
-	else if (strcmp(section,"dungeon1") == 0) {
+	else if (strcmp(section,"dungeon0") == 0) {
 		setupdungeon(g,0,name,value);
-	} else if (strcmp(section,"dungeon2") == 0) {
+	} else if (strcmp(section,"dungeon1") == 0) {
 		setupdungeon(g,1,name,value);
-	} else if (strcmp(section,"dungeon3") == 0) {
+	} else if (strcmp(section,"dungeon2") == 0) {
 		setupdungeon(g,2,name,value);
 	}
 	else {
@@ -56,13 +57,14 @@ int handler(void* user, const char* section, const char* name, const char* value
 	return 1;
 }
 
-struct game setupgame() {
+struct game* setupgame() {
 	struct game g;
-	int rtn = ini_parse("default.ini",handler,&g);
+	struct game* gptr = &g;
+	int rtn = ini_parse("default.ini",handler,gptr);
 	if (rtn < 0) {
 		printf("Failed to load default.ini!\n");
 		exit(0);
 	}
-	printf("dugeon name: (%s)\n",g.dgn[0].name);
-	return g;
+	printf("dugeon name: (%s)\n",gptr->dgn[0].name);
+	return gptr;
 }
