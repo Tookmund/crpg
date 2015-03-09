@@ -20,10 +20,9 @@ void setupplayer(struct game* g, int plynum, const char* name, const char* value
 	}
 }
 void setupdungeon(struct game* g, int dgnnum, const char* name, const char* value) {
+	printf("%s %d",value,dgnnum);
 	if (strcmp(name,"name") == 0) {
 		strncat(g->dgn[dgnnum].name,value,sizeof(g->dgn[dgnnum].name));
-		printf("default: %s",value);
-		printf("outputed: %s",g->dgn[dgnnum].name);
 	} else if (strcmp(name,"emaxhealth") == 0) {
 		g->dgn[dgnnum].e.maxhealth = atoi(value);
 	} else if (strcmp(name,"expgain") == 0) {
